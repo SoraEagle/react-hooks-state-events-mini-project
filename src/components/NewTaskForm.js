@@ -24,19 +24,17 @@ function NewTaskForm({categories}){
     setAsCategory("Code");
   }
 
-  // console.log("categories has been passed down to NewTaskForm");
   return(
-    <form className="new-task-form"> {/* Add onSubmit={addTask} */}
+    <form className="new-task-form" onSubmit={addTask} > {/* finish the addTask function!!! */}
       <label>
         Details
-        <input type="text" name="text" onChange={onDetails} value={details} /> {/*  */}
+        <input type="text" name="text" onChange={onDetails} value={details} />
       </label>
       <label>
         Category
-        <select name="category" onChange={onCategories} value={asCategory} > {/* Turn into controlled input */}
-          {/* render <option> elements for each category here */}
-          {taskCategory.map((ctgry) => ( //Use an alias reference to access the taskCategory indexes.
-            <option key={`key.${categories}`}>{ctgry}</option>
+        <select name="category" onChange={onCategories} value={asCategory} >
+          {taskCategory.map((ctgry) => ( //Uses an alias reference to access the taskCategory indexes.
+            <option key={`${ctgry}`}>{ctgry}</option>
           ))}
         </select>
       </label>
