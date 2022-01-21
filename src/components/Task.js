@@ -5,7 +5,9 @@ function Task({tasks, taskArray, category, text}){
     <div className="task">
       <div className="label">{category}</div>
       <div className="text">{text}</div>
-      <button className="delete">X</button>
+      <button 
+      // onClick={}
+      className="delete">X</button>
     </div>
   );
 }

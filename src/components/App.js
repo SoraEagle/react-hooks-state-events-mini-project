@@ -25,14 +25,20 @@ function App(){
     taskArray.push(newTask);
     setTaskCatalog(taskArray);
   }
-  // 
+
+  const tasksToDisplay = taskCatalog.filter((task) => {
+    // if(category === "All") return true;
+     return selectedCategory === "All" || task.category === selectedCategory;
+  });
+
   return(
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter 
       categories={CATEGORIES} 
       selectedCategory={selectedCategory} 
-      setSelectedCategory={setSelectedCategory} />
+      setSelectedCategory={setSelectedCategory}
+      taskCatalog={taskCatalog} />
 
       <NewTaskForm 
       categories={CATEGORIES} 
@@ -43,7 +49,7 @@ function App(){
       setAsCategory={setAsCategory}
       newTask={newTask} />
 
-      <TaskList tasks={TASKS} taskArray={taskArray} taskCatalog={taskCatalog} />
+      <TaskList tasks={tasksToDisplay} taskArray={taskArray} taskCatalog={taskCatalog} />
     </div>
   );
 }
