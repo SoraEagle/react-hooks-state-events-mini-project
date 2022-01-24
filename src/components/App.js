@@ -11,19 +11,9 @@ function App(){
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [taskCatalog, setTaskCatalog] = useState(TASKS);
 
-  const [details, setDetails] = useState("");
-  const [asCategory, setAsCategory] = useState("Code");
 
-  const newTask= {
-    text: details,
-    category: asCategory,
-  }
-
-  const taskArray = [...TASKS];
-  
-  function onTaskFormSubmit(newTask){
-    taskArray.push(newTask);
-    setTaskCatalog(taskArray);
+  function handleNewTask(newTask){
+    setTaskCatalog([...taskCatalog, newTask]);
   }
 
   const tasksToDisplay = taskCatalog.filter((task) => {
@@ -42,14 +32,9 @@ function App(){
 
       <NewTaskForm 
       categories={CATEGORIES} 
-      onTaskFormSubmit={onTaskFormSubmit}
-      details={details}
-      setDetails={setDetails}
-      asCategory={asCategory}
-      setAsCategory={setAsCategory}
-      newTask={newTask} />
+      handleNewTask={handleNewTask} />
 
-      <TaskList tasks={tasksToDisplay} taskArray={taskArray} taskCatalog={taskCatalog} />
+      <TaskList tasks={tasksToDisplay} taskCatalog={taskCatalog} />
     </div>
   );
 }

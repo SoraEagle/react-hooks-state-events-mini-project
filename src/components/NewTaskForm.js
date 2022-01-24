@@ -1,6 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 
-function NewTaskForm({categories, onTaskFormSubmit, details, setDetails, asCategory, setAsCategory, newTask}){
+function NewTaskForm({categories, handleNewTask}){
+  const [details, setDetails] = useState("");
+  const [asCategory, setAsCategory] = useState("Code");
+
+  const newTask= {
+    text: details,
+    category: asCategory,
+  }
+  
+  function onTaskFormSubmit(newTask){
+    handleNewTask(newTask);
+  }
 
   const taskCategory = [...categories]; //Array used for creating new tasks, without the "All" option.
   taskCategory.shift();
@@ -15,7 +26,7 @@ function NewTaskForm({categories, onTaskFormSubmit, details, setDetails, asCateg
   function addTask(event){ //Function called to submit new task and reset the task form
     event.preventDefault();
     onTaskFormSubmit(newTask); //Callback function in App
-    // console.log(onTaskFormSubmit); //function IS getting invoked...
+    console.log(onTaskFormSubmit); //function IS getting invoked...
     setDetails("");
     setAsCategory("Code");
   }

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Task({tasks, taskArray, task, category, text}){
+function Task({tasks, task, category, text}){
   // find indexOf of the task
   // let taskIndex = taskArray.indexOf(task, task); //This will only track the single element!!!
   return(
