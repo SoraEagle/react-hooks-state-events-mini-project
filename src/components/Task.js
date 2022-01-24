@@ -6,7 +6,7 @@ function Task({handleDeleteTask, category, text}){
       <div className="label">{category}</div>
       <div className="text">{text}</div>
       <button 
-      onClick={handleDeleteTask} //onClick, delete the selected task
+      onClick={() => {handleDeleteTask(text)}} //onClick, delete the selected task
       className="delete">X</button>
     </div>
   );

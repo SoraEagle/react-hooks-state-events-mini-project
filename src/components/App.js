@@ -16,7 +16,8 @@ function App(){
   }
 
   // Make a delete function
-  function handleDeleteTask(taskToDelete){ //"is removed from the list when the delete button is clicked", " expect(element).not.toBeInTheDocument()"
+  function handleDeleteTask(taskToDelete){ //Function to delete a task if it's Delete Button is pressed.
+    console.log(taskToDelete);
     setTaskCatalog(taskCatalog.filter((task) => task.text !== taskToDelete ));
   }
 
