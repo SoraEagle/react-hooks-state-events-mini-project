@@ -11,13 +11,16 @@ function App(){
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [taskCatalog, setTaskCatalog] = useState(TASKS);
 
-
-  function handleNewTask(newTask){
+  function onTaskFormSubmit(newTask){
     setTaskCatalog([...taskCatalog, newTask]);
   }
 
+  // Make a delete function
+  function handleDeleteTask(taskToDelete){ //"is removed from the list when the delete button is clicked", " expect(element).not.toBeInTheDocument()"
+    setTaskCatalog(taskCatalog.filter((task) => task.text !== taskToDelete ));
+  }
+
   const tasksToDisplay = taskCatalog.filter((task) => {
-    // if(category === "All") return true;
      return selectedCategory === "All" || task.category === selectedCategory;
   });
 
@@ -32,9 +35,12 @@ function App(){
 
       <NewTaskForm 
       categories={CATEGORIES} 
-      handleNewTask={handleNewTask} />
+      onTaskFormSubmit={onTaskFormSubmit} />
 
-      <TaskList tasks={tasksToDisplay} taskCatalog={taskCatalog} />
+      <TaskList 
+      tasks={tasksToDisplay} 
+      taskCatalog={taskCatalog}
+      handleDeleteTask={handleDeleteTask} />
     </div>
   );
 }
