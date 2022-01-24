@@ -7,7 +7,7 @@ function TaskList({tasks, taskArray, taskCatalog}){
       {/* display a list of tasks using Task component */}
       {/* Update later to use an Array created with the spread operator */}
       {tasks.map((task) => ( //Using an alias reference to access the task data.
-    <Task key={task.text} tasks={tasks} category={task.category} text={task.text} taskArray={taskArray} />
+    <Task key={task.text} tasks={tasks} category={task.category} text={task.text} taskArray={taskArray} task={task} />
   ))}
     </div>
   );

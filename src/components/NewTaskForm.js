@@ -15,6 +15,7 @@ function NewTaskForm({categories, onTaskFormSubmit, details, setDetails, asCateg
   function addTask(event){ //Function called to submit new task and reset the task form
     event.preventDefault();
     onTaskFormSubmit(newTask); //Callback function in App
+    // console.log(onTaskFormSubmit); //function IS getting invoked...
     setDetails("");
     setAsCategory("Code");
   }
