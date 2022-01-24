@@ -6,7 +6,7 @@ function CategoryFilter({categories, selectedCategory, setSelectedCategory}){
     <button 
     className={(category === selectedCategory ? "selected" : null)}
     key={category}
-    onClick={() => setSelectedCategory(category)} > {/* Create a callback function for this; Set current category */}
+    onClick={() => setSelectedCategory(category)} > {/* Set the current category */}
       {category}
     </button>
       ));
@@ -14,8 +14,7 @@ function CategoryFilter({categories, selectedCategory, setSelectedCategory}){
   return(
     <div className="categories">
       <h5>Category filters</h5>
-      {/* render <button> elements (with unique keys) with onClick={} for each category HERE. */}
-      {categoryButtons}
+      {categoryButtons} {/* renders <button> elements (with unique keys) with onClick={} for each category. */}
     </div>
   );
 }

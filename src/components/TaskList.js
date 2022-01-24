@@ -4,7 +4,6 @@ import Task from "./Task";
 function TaskList({tasks, handleDeleteTask}){
   return(
     <div className="tasks">
-      {/* display a list of tasks using Task component */}
       {tasks.map((task) => ( //Using an alias reference to access the task data.
     <Task key={task.text} 
     tasks={tasks} 
