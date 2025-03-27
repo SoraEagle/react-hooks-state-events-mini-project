@@ -4,44 +4,39 @@ import NewTaskForm from "./NewTaskForm";
 import TaskList from "./TaskList";
 
 import {CATEGORIES, TASKS} from "../data";
-console.log("Here's the data you're working with");
-console.log({CATEGORIES, TASKS});
 
 function App(){
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [taskCatalog, setTaskCatalog] = useState(TASKS);
+  const [category, setCategory] = useState("All");
+  const [tasks, setTasks] = useState(TASKS);
 
-  function onTaskFormSubmit(newTask){
-    setTaskCatalog([...taskCatalog, newTask]);
+  function handleAddTask(newTask){
+    setTasks([...tasks, newTask]);
   }
 
-  // Make a delete function
-  function handleDeleteTask(taskToDelete){ //Function to delete a task if it's Delete Button is pressed.
-    console.log(taskToDelete);
-    setTaskCatalog(taskCatalog.filter((task) => task.text !== taskToDelete ));
+  function handleDeleteTask(taskToDelete){
+    setTasks(tasks.filter((task) => task.text !== taskToDelete ));
   }
 
-  const tasksToDisplay = taskCatalog.filter((task) => {
-     return selectedCategory === "All" || task.category === selectedCategory;
+  const tasksToDisplay = tasks.filter((task) => {
+     return category === "All" || task.category === category;
   });
 
   return(
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter 
-      categories={CATEGORIES} 
-      selectedCategory={selectedCategory} 
-      setSelectedCategory={setSelectedCategory}
-      taskCatalog={taskCatalog} />
-
+        categories={CATEGORIES} 
+        selectedCategory={category} 
+        onSelectedCategory={setCategory}
+      />
+      <h5>Tasks</h5>
       <NewTaskForm 
-      categories={CATEGORIES} 
-      onTaskFormSubmit={onTaskFormSubmit} />
-
+        categories={CATEGORIES.filter((cat) => cat !== "All")} 
+        onTaskFormSubmit={handleAddTask} 
+      />
       <TaskList 
-      tasks={tasksToDisplay} 
-      taskCatalog={taskCatalog}
-      handleDeleteTask={handleDeleteTask} />
+        tasks={tasksToDisplay} onDeleteTask={handleDeleteTask} 
+      />
     </div>
   );
 }

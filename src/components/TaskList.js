@@ -1,18 +1,15 @@
 import React from "react";
 import Task from "./Task";
 
-function TaskList({tasks, handleDeleteTask}){
-  return(
-    <div className="tasks">
-      {tasks.map((task) => ( //Using an alias reference to access the task data.
+function TaskList({tasks, onDeleteTask}){
+  const taskList = tasks.map((task) => (
     <Task key={task.text} 
-    tasks={tasks} 
     category={task.category} 
     text={task.text} 
-    task={task}
-    handleDeleteTask={handleDeleteTask} />
-  ))}
-    </div>
+    onDeleteTask={onDeleteTask} />
+  ))
+  return(
+    <div className="tasks">{taskList}</div>
   );
 }
 
